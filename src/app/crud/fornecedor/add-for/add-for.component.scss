@@ -1,0 +1,93 @@
+@import '../../../../assets/config_scss/variables.scss';
+
+
+:host {
+    .container {
+        .card{
+            border: none
+        }
+
+        label{
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        span{
+            font-size: 30px;
+            margin-left: 15px;
+            font-weight: 700;
+            margin: 20px
+        }
+        .title{
+            margin-top: 40px;
+            color: var(--purple_medium);
+        }
+
+        .invalid{
+            color: var(--red);
+            font-size: 11px;
+            margin: 7px 0 5px 0;
+        }
+
+        .inputDiv{
+            width: 100%;
+            margin: 15px 0;
+        }
+
+        .divFornecedores{
+            width: 85%;
+        }
+        
+        .buttonAction{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 25px;
+
+            button{
+                padding: 10px 0;
+                border-radius: 50%;
+                scale: 0.8;
+            }
+
+            .deleteButton{
+                background-color: var(--lightGray);
+            }
+        }
+
+        form{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        input{
+            margin: 3px 0;
+        }
+
+        button{
+            padding: 8px 25px;
+            border-radius: 8px;
+            color: white;
+            background-color: var(--purple_medium);
+            font-weight: 400;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border: none;
+        }
+
+        .buttonBack{
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin: 25px 0;
+            margin-bottom: 100px;
+        }
+
+        .voltarButton{
+            color: white;
+            border: none;
+            background-color: var(--darkGray);
+        }
+    }
+}

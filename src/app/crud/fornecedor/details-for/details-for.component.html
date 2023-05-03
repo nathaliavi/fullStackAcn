@@ -1,0 +1,54 @@
+<app-header></app-header>
+
+<div class="col-md-6 offset-md-3">
+    <div class="container">
+        <div class="card">
+            <div class="title">
+                <span>Detalhes do fornecedor</span>
+            </div>
+
+            <div class="card-body">
+                <div class="inputDiv">
+                    <label><b>CNPJ:</b></label>
+                        <p>{{fornecedor.cnpjCpf}}</p>
+                </div>
+                <div class="inputDiv">
+                    <label><b>Nome fantasia:</b></label>
+                        <p>{{fornecedor.name}}</p>
+                </div>
+                <div class="inputDiv">
+                    <label><b>Email</b></label>
+                        <p>{{fornecedor.email}}</p>
+                </div>
+                <div class="inputDiv">
+                    <label><b>CEP</b></label>
+                        <p>{{fornecedor.cep}}</p>
+                </div>
+                <div class="inputDiv">
+                    <label><b>Empresas</b></label>
+                    <ul *ngFor="let empresa of empresasArray; let i = index">
+                        <label style="margin-top: 15px; margin-bottom: -15px;"><b>Empresa {{i + 1}}</b></label>
+                        <ol class="inputDiv" style="margin-top: 5px;">
+                            <label><b>CNPJ:</b></label>
+                            <p>{{empresa.cnpj}}</p>
+                        </ol>
+                        <ol class="inputDiv">
+                            <label><b>Nome:</b></label>
+                            <p>{{empresa.name}}</p>
+                        </ol>
+                        <ol class="inputDiv">
+                            <label><b>CEP:</b></label>
+                            <p>{{empresa.cep}}</p>
+                        </ol>
+                    </ul>   
+                </div>
+
+                <div class="buttonBack">
+                    <button class="btn " [routerLink]="['/fornecedor']" routerLinkActive="active">Voltar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

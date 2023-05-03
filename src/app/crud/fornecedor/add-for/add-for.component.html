@@ -1,0 +1,102 @@
+<app-header></app-header>
+<div class="col-md-6 offset-md-3">
+
+  <div class="container">
+    <div class="card">
+      <div class="title">
+        <span>Novo fornecedor</span>
+
+      </div>
+      <div class="card-body">
+        <form [formGroup]="createFornecedor">
+          <div class="form-group inputDiv">
+            <label>CNPJ/CPF</label>
+            <input type="text" class="form-control" id="cnpjInput" 
+              formControlName="cnpjCpf" name="cnpjCpf">
+            <span *ngIf="createFornecedor.get('cnpj')?.errors?.['required'] && (createFornecedor.get('cnpj')?.touched || createFornecedor.get('cnpj')?.dirty)" class="invalid">Campo obrigatório</span>
+            <span *ngIf="createFornecedor.get('cnpj')?.errors?.['pattern'] && (createFornecedor.get('cnpj')?.touched || createFornecedor.get('cnpj')?.dirty)" class="invalid">Campo inválido</span>
+          </div>
+          <div class="form-group inputDiv">
+            <label>Nome</label>
+            <input type="text" class="form-control" id="nameInput" 
+              formControlName="name" name="name" required>
+            <span *ngIf="createFornecedor.get('name')?.errors?.['required'] && (createFornecedor.get('name')?.touched || createFornecedor.get('name')?.dirty)" class="invalid">Campo obrigatório</span>
+          </div>
+          <div class="form-group inputDiv">
+            <label>Email</label>
+            <input type="text" class="form-control" id="emailInput" 
+              formControlName="email" name="email" required>
+            <span *ngIf="createFornecedor.get('email')?.errors?.['required'] && (createFornecedor.get('email')?.touched || createFornecedor.get('email')?.dirty)" class="invalid">Campo obrigatório</span>
+          </div>
+          <div class="form-group inputDiv">
+            <label>CEP</label>
+            <input type="text" class="form-control" id="cepInput" 
+              formControlName="cep" name="cep">
+            <span *ngIf="createFornecedor.get('cep')?.errors?.['required'] 
+              && 
+              (createFornecedor.get('cep')?.touched || 
+              createFornecedor.get('cep')?.dirty)" class="invalid"
+            >Campo obrigatório</span>
+            <span *ngIf="(createFornecedor.get('cep')?.errors?.['pattern'] || 
+              createFornecedor.get('cep')?.errors?.['minlength'] || 
+              createFornecedor.get('cep')?.errors?.['maxlength']) 
+              && 
+              (createFornecedor.get('cep')?.touched || 
+              createFornecedor.get('cep')?.dirty)" class="invalid"
+            >Campo inválido</span>
+          </div>
+
+<!--
+          <div class="form-group inputDiv">
+            <label>Fornecedores vinculados</label>
+            <input type="text" class="form-control" id="fornecedoresInput" 
+              formArrayName="fornecedores" required>
+            <span *ngIf="createFornecedor.get('fornecedores')?.errors?.['required'] && (createFornecedor.get('fornecedores')?.touched || createFornecedor.get('fornecedores')?.dirty)" class="invalid">Campo obrigatório</span>
+          </div>
+    -->    
+    <div class="inputDiv">
+      <label>Empresas</label>
+    </div>
+    <div formArrayName="empresas" class="divFornecedores">
+      <div *ngFor="let fornecedor of empresasArray.controls; let i=index" [formGroupName]="i">
+        <div >
+          <div class="form-group inputDiv">
+            <label>CNPJ</label>
+            <input  class="form-control" type="text" formControlName="cnpj">
+          </div>
+          <div class="form-group inputDiv">
+            <label>Nome</label>
+            <input  class="form-control" type="text" formControlName="name">
+          </div>
+          <div class="form-group inputDiv">
+            <label>CEP</label>
+            <input  class="form-control" type="text" formControlName="cep">
+          </div>
+        </div>
+        <div class="buttonAction">
+          <button>
+            <a (click)="addEmpresas()">
+              <img src="../../../../assets/icons/listComponent/plus.svg" alt="Delete" style="width: 22px; cursor: pointer;  margin:0 13px 0 13px;">
+            </a>
+          </button>
+          <button class="deleteButton">
+            <a (click)="removeEmpresas(i)">
+              <img src="../../../../assets/icons/listComponent/trash.svg" alt="Delete" style="width: 22px; cursor: pointer;  margin:0 13px 0 13px;">
+            </a>
+          </button>
+        </div>
+      </div>
+    </div> 
+        
+          <div class="buttonBack">
+            <button class="btn " type="submit" (click)="onSubmit()" [disabled]="createFornecedor.invalid">Enviar</button>
+            <button class="btn voltarButton" [routerLink]="['/empresa']" routerLinkActive="active">Voltar</button>
+          </div>
+        
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

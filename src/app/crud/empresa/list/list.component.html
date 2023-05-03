@@ -1,0 +1,44 @@
+<app-header></app-header>
+<div class="container">
+    <div class="title">
+        <span>Empresas</span>
+        <button [routerLink]="['add']" routerLinkActive="active">
+            <img src="../../../../assets/icons/listComponent/plus.svg" alt="Add" style="width: 20px;">
+                Adicionar
+        </button>
+    </div>
+
+
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead>
+                <tr class="text-center">
+                    <th>CNPJ</th>
+                    <th>Nome Fantasia</th>
+                    <th>CEP</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="text-center" *ngFor="let empresa of empresas">
+                    <td>{{empresa.cnpj}}</td>
+                    <td>{{empresa.name}}</td>
+                    <td>{{empresa.cep}}</td>
+                    <td>
+                        <a [routerLink]="['edit', empresa.id]">
+                            <img src="../../../../assets/icons/listComponent/edit.svg" alt="Edit" style="width: 20px;">
+                        </a>
+                        <a (click)="deleteEmpresa(empresa.id)">
+                            <img src="../../../../assets/icons/listComponent/trash.svg" alt="Delete" style="width: 22px; cursor: pointer;  margin:0 13px 0 13px;">
+                        </a>
+                        <a [routerLink]="['details', empresa.id]">
+                            <img src="../../../../assets/icons/listComponent/info.svg" alt="Info" style="width: 22px;">
+                        </a>
+                      </td>
+                </tr>
+            </tbody>
+        </table>        
+    </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<div class="col-md-6 offset-md-3">
+    <div class="container">
+        <div class="card">
+            <div class="title">
+                <span>Detalhes da empresa</span>
+            </div>
+
+            <div class="card-body">
+                <div class="inputDiv">
+                    <label><b>CNPJ:</b></label>
+                        <p>{{empresa.cnpj}}</p>
+                </div>
+                <div class="inputDiv">
+                    <label><b>Nome fantasia:</b></label>
+                        <p>{{empresa.name}}</p>
+                </div>
+                <div class="inputDiv">
+                    <label><b>CEP</b></label>
+                        <p>{{empresa.cep}}</p>
+                </div>
+
+                <div class="buttonBack">
+                    <button class="btn " [routerLink]="['/empresa']" routerLinkActive="active">Voltar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

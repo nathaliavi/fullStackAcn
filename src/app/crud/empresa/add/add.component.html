@@ -1,0 +1,103 @@
+<app-header></app-header>
+<div class="col-md-6 offset-md-3">
+
+  <div class="container">
+    <div class="card">
+      <div class="title">
+        <span>Nova empresa</span>
+
+      </div>
+      <div class="card-body">
+        <form [formGroup]="createEmpresa">
+          <div class="form-group inputDiv">
+            <label>CNPJ</label>
+            <input type="text" class="form-control" id="cnpjInput" 
+              formControlName="cnpj" name="cnpj">
+            <span *ngIf="createEmpresa.get('cnpj')?.errors?.['required'] && (createEmpresa.get('cnpj')?.touched || createEmpresa.get('cnpj')?.dirty)" class="invalid">Campo obrigatório</span>
+            <span *ngIf="createEmpresa.get('cnpj')?.errors?.['pattern'] && (createEmpresa.get('cnpj')?.touched || createEmpresa.get('cnpj')?.dirty)" class="invalid">Campo inválido</span>
+          </div>
+          <div class="form-group inputDiv">
+            <label>Nome Fantasia</label>
+            <input type="text" class="form-control" id="nameInput" 
+              formControlName="name" name="name" required>
+            <span *ngIf="createEmpresa.get('name')?.errors?.['required'] && (createEmpresa.get('name')?.touched || createEmpresa.get('name')?.dirty)" class="invalid">Campo obrigatório</span>
+          </div>
+          <div class="form-group inputDiv">
+            <label>CEP</label>
+            <input type="text" class="form-control" id="cepInput" 
+              formControlName="cep" name="cep">
+            <span *ngIf="createEmpresa.get('cep')?.errors?.['required'] 
+              && 
+              (createEmpresa.get('cep')?.touched || 
+              createEmpresa.get('cep')?.dirty)" class="invalid"
+            >Campo obrigatório</span>
+            <span *ngIf="(createEmpresa.get('cep')?.errors?.['pattern'] || 
+              createEmpresa.get('cep')?.errors?.['minlength'] || 
+              createEmpresa.get('cep')?.errors?.['maxlength']) 
+              && 
+              (createEmpresa.get('cep')?.touched || 
+              createEmpresa.get('cep')?.dirty)" class="invalid"
+            >Campo inválido</span>
+          </div>
+
+<!--
+          <div class="form-group inputDiv">
+            <label>Fornecedores vinculados</label>
+            <input type="text" class="form-control" id="fornecedoresInput" 
+              formArrayName="fornecedores" required>
+            <span *ngIf="createEmpresa.get('fornecedores')?.errors?.['required'] && (createEmpresa.get('fornecedores')?.touched || createEmpresa.get('fornecedores')?.dirty)" class="invalid">Campo obrigatório</span>
+          </div>
+    -->    
+    <div class="inputDiv">
+      <label>Fornecedores</label>
+    </div>
+    <div formArrayName="fornecedores" class="divFornecedores">
+      <div *ngFor="let fornecedor of fornecedoresArray.controls; let i=index" [formGroupName]="i">
+        <div >
+          <div class="form-group inputDiv">
+            <label>CNPJ/CPF</label>
+            <input  class="form-control" type="text" formControlName="cnpjCpf">
+          </div>
+          <div class="form-group inputDiv">
+            <label>Nome</label>
+            <input  class="form-control" type="text" formControlName="name">
+          </div>
+          <div class="form-group inputDiv">
+            <label>Email</label>
+            <input  class="form-control" type="text" formControlName="email">
+          </div>
+          <div class="form-group inputDiv">
+            <label>CEP</label>
+            <input  class="form-control" type="text" formControlName="cep">
+          </div>
+        </div>
+        <div class="buttonAction">
+          <button>
+            <a (click)="addFornecedores()">
+              <img src="../../../../assets/icons/listComponent/plus.svg" alt="Delete" style="width: 22px; cursor: pointer;  margin:0 13px 0 13px;">
+            </a>
+          </button>
+          <button class="deleteButton">
+            <a (click)="removeFornecedores(i)">
+              <img src="../../../../assets/icons/listComponent/trash.svg" alt="Delete" style="width: 22px; cursor: pointer;  margin:0 13px 0 13px;">
+            </a>
+          </button>
+        </div>
+      </div>
+    </div> 
+        
+        
+        
+          <div class="buttonBack">
+            <button class="btn " type="submit" (click)="onSubmit()" [disabled]="createEmpresa.invalid">Enviar</button>
+            <button class="btn voltarButton" [routerLink]="['/empresa']" routerLinkActive="active">Voltar</button>
+          </div>
+        
+        
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
